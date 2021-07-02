@@ -1,0 +1,25 @@
+{
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "build:uat": "vite build --mode uat"
+  },
+  "dependencies": {
+    "vue": "^3.1.2",
+    "vue-i18n": "9",
+    "vue-router": "4",
+    "vuex": "4"
+  },
+  "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "2",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.0.5",
+    "eslint": "7",
+    "eslint-config-prettier": "8",
+    "eslint-plugin-vue": "7",
+    "prettier": "2",
+    "vite": "^2.3.8"
+  }
+}
