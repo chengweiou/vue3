@@ -10,7 +10,7 @@ chmod +x uat.sh
 ./uat.sh
 ```
 
-### 启动开发幻境
+### 启动开发环境
 ```
 yarn dev
 ```

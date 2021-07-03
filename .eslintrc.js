@@ -31,7 +31,7 @@ module.exports = {
     'no-tabs': 0,
     'no-trailing-spaces': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 0, 'maxBOF': 0 }],
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
   },
   // parserOptions: {
   //   parser: 'babel-eslint',
