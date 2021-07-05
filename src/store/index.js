@@ -20,9 +20,12 @@ function moduleList() {
 }
 function pluginList() {
   const list = import.meta.globEager('./plugin/*.js')
-  const result = []
+  const orderList = []
   for (const e in list) {
-    result.push(list[e].default)
+    orderList.push({order: list(e).order, v: list(e).default})
   }
+  orderList.sort((a, b)=>a.order-b.order)
+  let result = []
+  orderList.forEach(e => result.push(e.v))
   return result
 }

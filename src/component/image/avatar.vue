@@ -1,11 +1,11 @@
 <template>
-  <div :width="width" :height="height" style="border-radius: 50%; overflow: hidden;">
+  <div style="border-radius: 50%; overflow: hidden;" :style="{width: width, height: height}">
     <centerImage :src="src"/>
   </div>
 </template>
 
 <script>
-import centerImage from '@/component/image/centerImage'
+import centerImage from '@/component/image/centerImage.vue'
 export default {
   components: {
     centerImage,
