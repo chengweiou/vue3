@@ -2,9 +2,10 @@
  * todo 与store.state.me 绑定过强，考虑分离, 现在和store.state.me 绑定越来越强了- -|||
  */
 export const order = 2
+
 export default store => {
-  let setData = async() => {
-    // 按用户区分db， 同一个项目可以有多个用户登录
+  let findByDb = async() => {
+    // 如果是当前cache与db同一个用户，则不操作
     if (Db.checkAndSetName(store.state['me'].user.id || 'guest')) return
     await Db.open()
     Object.keys(store.state).filter(k => store.state[k].db).forEach(async k => {
@@ -13,9 +14,10 @@ export default store => {
       store.state[k] = {...store.state[k], ...data}
     })
   }
-  setData()
+  findByDb()
   store.subscribe(async(mutation, state) => {
-    if (mutation.type == 'me/user') setData()
+    // 如果切换用户, 则加载新用户数据
+    if (mutation.type == 'me/user') findByDb()
     let module = mutation.type.substring(0, mutation.type.indexOf('/'))
     if (!state[module].db) return
     if (mutation.payload === 'REMOVE') {
@@ -74,8 +76,13 @@ class Db {
     })
   }
   static checkAndSetName(name) {
+    if (!multiUser) name = 'vuex'
     if (this._name == name) return true
     this._name = name
     return false
   }
 }
+
+// todo tip: 按用户区分db， 同一个项目可以有多个用户登录
+// 一般来说没必要，一个用户登录就行
+const multiUser = false

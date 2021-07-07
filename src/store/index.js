@@ -22,7 +22,7 @@ function pluginList() {
   const list = import.meta.globEager('./plugin/*.js')
   const orderList = []
   for (const e in list) {
-    orderList.push({order: list(e).order, v: list(e).default})
+    orderList.push({order: list[e].order || 0, v: list[e].default})
   }
   orderList.sort((a, b)=>a.order-b.order)
   let result = []
