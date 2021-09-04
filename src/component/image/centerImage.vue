@@ -31,12 +31,13 @@ export default {
   methods: {
     draw() {
       let canvas = this.$refs.canvas
-      canvas.width = canvas.clientWidth * 2
-      canvas.height = canvas.clientHeight * 2
+      canvas.width = canvas.clientWidth * 2 || 100
+      canvas.height = canvas.clientHeight * 2 || 100
+
       let ctx = canvas.getContext('2d')
       let img = new Image()
       img.src = this.src
-      if (!img.width) {
+      img.onerror = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.beginPath()
         ctx.moveTo(canvas.width / 3, canvas.height / 3)

@@ -11,10 +11,10 @@
           <button @click="reloadDb">reload db img</button>
           <label v-if="form.img" style="width: 100%; height: 100%; display: block;">
             <centerImage :src="form.img"/>
-            <input type="file" style="display: none;" @change="readPic($event)">
+            <input type="file" style="display: none;" @change="readPic">
           </label>
           <label v-else style="width: 100%; height: 100%; display: block;">
-            {{ t('Image') }} <input type="file" style="display: none;" @change="readPic($event)" >
+            {{ t('Image') }} <input type="file" style="display: none;" @change="readPic" >
           </label>
         </section>
         <div style="display: flex;">
@@ -84,13 +84,17 @@ export default {
     reloadDb() {
       this.form = this.$store.state.xxxDb.save
     },
-    readPic(e) {
+        async readPic(event) {
+      if (!event.target.files) {
+        this.form.imgsrc = ''
+        return
+      }
       let reader = new FileReader()
+      reader.readAsDataURL(event.target.files[0])
       reader.onload = () => {
-        this.form.img = reader.result
+        this.form.imgsrc = reader.result
         this.$store.dispatch('xxxDb/save', this.form)
       }
-      reader.readAsDataURL(e.target.files[0])
     },
     async save() {
       if (!this.form.name) {
