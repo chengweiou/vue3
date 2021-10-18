@@ -10,6 +10,12 @@ const actions = {
 const mutations = {
 }
 
+function initState(s) {
+  Object.keys(CLEAN_STATE).forEach(key => {
+    s[key] = CLEAN_STATE[key]
+  })
+}
+
 export default {
   namespaced: true, state, actions, mutations,
 }

@@ -15,7 +15,8 @@ export default class {
         options.headers.append('Content-Type', 'application/x-www-form-urlencoded')
       }
     }
-    options.headers.append('Authorization', `Bearer ${storage.get('token')}`)
+    options.headers.append('authorization', `Bearer ${storage.get('token')}`)
+    options.headers.append('loginAccount', JSON.stringify(storage.get('loginAccount')))
     let response = {}
     try {
       response = await fetch(url, options)

@@ -10,7 +10,7 @@ const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('save', payload)
+    commit('save', {...payload, ...clone(CLEAN_STATE).save})
   },
 }
 
