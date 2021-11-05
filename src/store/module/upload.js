@@ -1,5 +1,4 @@
-import service from '@/sdk/lessonService'
-import uploadService from '@/sdk/uploadService'
+import service from '@/sdk/uploadService'
 import { clone, emptyFn } from '@/fn'
 
 const CLEAN_STATE = {
@@ -9,7 +8,7 @@ const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await uploadService.mg().save({ file: payload.img, category: payload.category, w: 1000, single: true })
+    let rest = await service.mg().save({ file: payload.img, category: payload.category, w: 1000, single: true })
     if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return ''
