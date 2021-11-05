@@ -58,7 +58,7 @@ import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { wait, empty, clone, storage, phone, number, date } from '@/fn'
+import { wait, emptyFn, clone, storage, phone, number, date } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute(), { t, locale } = useI18n({ inheritLocale: true })
 // tip: 定义 页面
@@ -69,7 +69,7 @@ const sortList = [
   { label: '日期排序 - 旧->新', value: 'updateAt,true' },
 ]
 const cleanForm = {
-  ...empty.xxx(), img: '',
+  ...emptyFn.xxx(), img: '',
   ...store.state.xxxDb.save,
 }
 // tip: 定义 需要关联的
