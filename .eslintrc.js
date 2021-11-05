@@ -33,8 +33,11 @@ module.exports = {
     'no-trailing-spaces': 'error',
     'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 0, 'maxBOF': 0 }],
     "indent": ["error", 2, { "SwitchCase": 1 }],
-    // todo 这里先这样吧，到时候在考虑去掉
-    "vue/script-setup-uses-vars": "off",
+    "vue/first-attribute-linebreak": ["error", {
+      "singleline": "ignore",
+      "multiline": "ignore",
+    }],
+    "vue/multi-word-component-names": 0,
   },
   parserOptions: {
     ecmaVersion: '2021',

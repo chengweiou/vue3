@@ -9,34 +9,34 @@
   </main>
 </template>
 
-<script>
-export default {
-  components: {
-  },
-  data() {
-    return {
-      ws: {},
-      list: [],
+<script setup>
+// tip: 导入 component
+// tip: 导入 data
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+import { wait, empty, clone, storage } from '@/fn'
+// tip: 定义 各种 use
+// tip: 定义 页面
+// tip: 定义 不需要关联的
+// tip: 定义 需要关联的
+const ws = ref({})
+const list = ref([])
+// tip: 定义 computed 计算的
+// tip: 定义 方法
+const start = () => {
+  ws.value = new WebSocket('ws://127.0.0.1:8907/adminpath/log')
+  ws.value.onopen = () => {
+    ws.value.onmessage = (response) => {
+      let message = JSON.parse(response.data)
+      list.value.unshift(message)
     }
-  },
-  computed: {
-  },
-  created() {
-    this.start()
-  },
-  methods: {
-    async start() {
-      this.ws = new WebSocket('ws://127.0.0.1:8907/adminpath/log')
-      this.ws.onopen = () => {
-        this.ws.onmessage = (response) => {
-          let message = JSON.parse(response.data)
-          this.list.unshift(message)
-        }
-      }
-    },
-    clean() {
-      this.list = []
-    },
-  },
+  }
 }
+const clean = () => {
+  list.value = []
+}
+// tip: 初始化空数据
+start()
 </script>

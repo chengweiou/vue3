@@ -3,6 +3,7 @@ import paramUtil from './paramUtil'
 import exceptionUtil from './exceptionUtil'
 import dataMap from './data'
 export default class {
+  // todo 加入请求组，第一个作为测试token，然后过期，则刷新token
   static async run(url, options) {
     return this.runPredev(url, options) // 当后端没有数据，前端需要自行编辑数据的时候
     // return this.r(url, options)
@@ -16,7 +17,8 @@ export default class {
       }
     }
     options.headers.append('authorization', `Bearer ${storage.get('token')}`)
-    options.headers.append('loginAccount', JSON.stringify(storage.get('loginAccount')))
+    // todo tip: 直接带登录账号请求服务端 生产环境去除
+    options.headers.append('loginAccount', `${storage.get('loginAccount')}`)
     let response = {}
     try {
       response = await fetch(url, options)

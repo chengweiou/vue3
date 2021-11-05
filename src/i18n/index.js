@@ -1,13 +1,11 @@
 import { createI18n } from 'vue-i18n'
 import messages from '@intlify/vite-plugin-vue-i18n/messages'
 
-import storage from '@/sdk/util/storage'
+import { storage } from '@/fn'
 
-let lang = storage.get('lang')
-if (!lang) {
-  lang = 'en'
-  storage.set('lang', 'en')
-}
+let lang = storage.get('lang') ?? 'zh'
+storage.set('lang', lang)
+
 export const i18n = createI18n({
   locale: lang,
   globalInjection: true,

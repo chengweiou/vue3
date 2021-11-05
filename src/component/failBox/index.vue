@@ -6,21 +6,25 @@
     </div>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-    }
-  },
-  computed: {
-    show() { return this.$store.state.failBox.show },
-    name() { return this.$store.state.failBox.name },
-    content() { return this.$store.state.failBox.content },
-  },
-  methods: {
-    off() {
-      this.$store.dispatch('failBox/off')
-    },
-  },
+
+<script setup>
+// tip: 导入 component
+// tip: 导入 data
+import { ref, computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter, useRoute } from 'vue-router'
+// tip: 定义 各种 use
+const store = useStore(), router = useRouter(), route = useRoute()
+// tip: 定义 页面
+// tip: 定义 不需要关联的
+// tip: 定义 需要关联的
+// tip: 定义 computed 计算的
+const show = computed(() => store.state.failBox.show)
+const name = computed(() => store.state.failBox.name)
+const content = computed(() => store.state.failBox.content)
+// tip: 定义 方法
+const off = () => {
+  store.dispatch('failBox/off')
 }
+// tip: 初始化空数据
 </script>

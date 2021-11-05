@@ -1,17 +1,18 @@
-import clone from '@/fn/util/clone'
-import empty from '@/fn/data/empty'
-
+import { clone, empty } from '@/fn'
 const CLEAN_STATE = {
   db: true,
   cache: false,
-  save: empty.xxx,
+  save: {...empty.xxx(), id: null},
 }
 
 const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
-    commit('save', {...payload, ...clone(CLEAN_STATE).save})
+    commit('save', {...clone(CLEAN_STATE).save, ...payload})
+  },
+  async cleanSave({ commit, dispatch, state, rootState }, payload, config = {}) {
+    commit('save', clone(CLEAN_STATE).save)
   },
 }
 
