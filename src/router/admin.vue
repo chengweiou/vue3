@@ -14,9 +14,9 @@
 </template>
 <script setup>
 // tip: 导入 component
-import projHeader from '@/component/nav/projHeader.vue'
-import projFooter from '@/component/nav/projFooter.vue'
-import projAsider from '@/component/nav/projAsider.vue'
+// import projHeader from '@/component/nav/projHeader.vue'
+// import projFooter from '@/component/nav/projFooter.vue'
+// import projAsider from '@/component/nav/projAsider.vue'
 // tip: 导入 data
 // tip: 定义 各种 use
 // tip: 定义 页面
