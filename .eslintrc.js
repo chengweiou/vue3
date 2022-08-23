@@ -6,8 +6,8 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:vue/vue3-recommended",
-    "prettier",
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
   ],
   settings: { // @路径引入的文件也需要校验
     'import/resolver': {
