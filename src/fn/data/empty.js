@@ -1,6 +1,6 @@
 import { clone } from '@/fn'
 const map = {}
-export default map
+
 const detail = {
   xxx: { id: 0, name: '', date: '', phone: '', vote: 0 },
 }
@@ -11,3 +11,4 @@ function createMap() {
     map[k] = () => clone(detail[k])
   })
 }
+export default map

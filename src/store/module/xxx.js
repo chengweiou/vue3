@@ -1,13 +1,13 @@
 import service from '@/sdk/xxxService'
 import uploadService from '@/sdk/uploadService'
-import { clone, emptyFn } from '@/fn'
+import { clone, empty } from '@/fn'
 
 const CLEAN_STATE = {
   total: 0,
   page: { curr: 1 },
   filter: { k: '', skip: 0, limit: 10 },
   list: [],
-  detail: emptyFn.xxx(),
+  detail: empty.xxx(),
 }
 
 const state = clone(CLEAN_STATE)

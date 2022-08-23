@@ -18,7 +18,7 @@
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/cli-plugin-eslint": "~5.0.8",
-    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/compiler-sfc": "^3.2.21",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8",
     "eslint-plugin-vue": "^9.4.0",

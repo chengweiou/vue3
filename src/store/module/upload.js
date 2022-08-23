@@ -1,5 +1,5 @@
 import service from '@/sdk/uploadService'
-import { clone, emptyFn } from '@/fn'
+import { clone, empty } from '@/fn'
 
 const CLEAN_STATE = {
 }

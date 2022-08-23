@@ -54,7 +54,7 @@ import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { wait, emptyFn, clone, storage, phone, number, date } from '@/fn'
+import { wait, empty, clone, storage, phone, number, date } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute(), { t, locale } = useI18n({ inheritLocale: true })
 // tip: 定义 页面
@@ -66,7 +66,7 @@ const rules = {
   img: [{ validator: (rule, value, callback) => (form.value.img || form.value.imgsrc) ? callback() : callback(new Error('请选择图片')), trigger: 'blur' }],
 }
 const cleanForm = {
-  ...emptyFn.xxx(), img: '',
+  ...empty.xxx(), img: '',
   ...store.state.xxxDb.save,
 }
 // tip: 定义 需要关联的
@@ -114,7 +114,7 @@ const update = () => {
   })
 }
 // tip: 初始化空数据
-store.state.xxx.detail = emptyFn.xxx()
+store.state.xxx.detail = empty.xxx()
 findById()
 </script>
 

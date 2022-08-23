@@ -1,8 +1,8 @@
-import { clone, emptyFn } from '@/fn'
+import { clone, empty } from '@/fn'
 const CLEAN_STATE = {
   db: true,
   cache: false,
-  save: {...emptyFn.xxx(), id: null},
+  save: {...empty.xxx(), id: null},
 }
 
 const state = clone(CLEAN_STATE)
